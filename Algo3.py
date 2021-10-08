@@ -20,11 +20,11 @@ def Recommend_Videos(model,user_id,user_meta,n_recommended):
 
 def Model_Recommendation(Data):
 	
-	n_users = len( Data.UserID.Unique())	#get number of unique users
-	n_videos = len( Data.VideosID.Unique())	#get number of unique videos
+    n_users = len( Data.UserID.Unique())	#get number of unique users
+    n_videos = len( Data.VideosID.Unique())	#get number of unique videos
 
 
-	user = Input(shape=(1,))
+    user = Input(shape=(1,))
     u = EmbeddingLayer(n_users, 10)(user)
 
     y = len(vector_for_user_description)#this is user's meta
@@ -50,9 +50,9 @@ def Model_Recommendation(Data):
 
     model = Model(inputs=[user_meta, user, video, video_meta], outputs=z)
     opt = Adam(lr =0.01)
-	model.compile(optimizer='adam',loss= 'mean_absolute_error')
+    model.compile(optimizer='adam',loss= 'mean_absolute_error')
 
-	return model
+    return model
 
 
 
